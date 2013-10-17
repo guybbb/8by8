@@ -1,7 +1,13 @@
 from bottle import route, run, response, hook, static_file, get, redirect, PasteServer, request, abort, template
 import yql
+import sqlite3
+from ledbridge import sendtogrid
 
+#configuration
+con = sqlite3.connect('stocks.db')
+con.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol char(100) NOT NULL, purchase_price INTEGER NOT NULL)")
 server_port = 80
+demo = False
 
 @hook('after_request')
 def enable_cors():
@@ -48,6 +54,21 @@ def get_quote():
 	res = y.execute(query, env="store://datatables.org/alltableswithkeys")
 
 	return template('index',stocks=res.rows)
+
+@route('/stocks', method='PUT')
+def update_quotes():
+	
+	response.content_type = 'application/json'
+	#get list of stocks from JSON object
+
+	print request.json
+	for stock in request.json:
+		print stock['symbol'], stock['price']
+	out = {'status':'ok'}
+
+	if not(demo):
+		sendtogrid([500,300,200,100], [498, 301, 202, 99], 5)
+	return out
 
 run(host='0.0.0.0', port=server_port, reloader=True, debug=True)
 
