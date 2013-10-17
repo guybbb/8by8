@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+  <!-- Built with Divshot - http://www.divshot.com -->
+  
+  <head>
+    <title>New Page</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> 
+    
+    <style>
+      body
+      {
+      background-color:#500095;
+      }
+      .logo { 
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 212px;
+          height: 146px;
+        }
+        .stocktable {
+          position: absolute;
+          top: 180px;
+          left: 100px;
+          color: white;
+        }
+        table{
+          border: 0px ;
+          table-layout: fixed;
+          width: 200px;
+        }
+        td, th {
+          width: 200px;
+        }     
+}
+
+</style>
+  </head>
+  
+  <body>
+    <div class='logo'><img src='/images/logo.gif' />
+    <div class="stocktable">
+        <table>
+          <thead><tr>
+            <th>Symbol</th>
+            <th>Purchase Price</th>
+            <th>Color</th>
+          </tr>
+          </thead>
+          <tr>
+            <td><input type="text" value="AAPL"></td>
+            <td><input type="text" value="500"></td>
+            <td class="color_blue"><img src="/images/color_01_blue.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><input type="text" value="AAPL"></td>
+            <td><input type="text" value="500"></td>
+            <td class="color_green"><img src="/images/color_02_green.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><input type="text" value="AAPL"></td>
+            <td><input type="text" value="500"></td>
+            <td class="color_yellow"><img src="/images/color_03_yellow.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><input type="text" value="AAPL"></td>
+            <td><input type="text" value="500"></td>
+            <td class="color_red"><img src="/images/color_04_red.png" alt=""></td>
+          </tr>
+        </table>
+        <input type="button" value="Start dreaming">
+    </div>
+  </body>
+
+</html>

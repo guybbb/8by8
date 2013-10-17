@@ -1,0 +1,45 @@
+<html>
+
+
+<canvas id="myCanvas" width="400" height="400"
+style="border:1px solid #000000;">
+</canvas>
+
+<script>
+function Shape(x, y, w, h, fill) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.fill = fill;
+}
+
+// get canvas element.
+var elem = document.getElementById('myCanvas');
+
+// check if context exist
+if (elem.getContext) {
+
+    var myRect = [];
+
+    for(x=3;x<=(50*8);x+=50) {
+    	for(y=3;y<(50*8);y+=50) {
+    		myRect.push(new Shape(x, y, 44, 44, "#300"));
+    	}
+
+    }
+	
+    context = elem.getContext('2d');
+    for (var i in myRect) {
+        oRec = myRect[i];
+        context.fillStyle = oRec.fill;
+        context.fillRect(oRec.x, oRec.y, oRec.w, oRec.h);
+
+    }
+
+}
+
+
+</script>
+
+</html>
