@@ -1,5 +1,5 @@
 import math
-import spidev
+#import spidev
 import time
 from time import sleep
 
@@ -15,20 +15,15 @@ BROWN = RED|BLUE - 0X1F
 
 def sendtogrid(purchase_price, current_price, scale_pct, demo=False):
 
-    if (demo==True):
-        full_scale_pct = 5
-        ref_level = 32.88
-        current_val = 32.3
-        stock_sn = 0
-    else:
-        full_scale_pct = scale_pct
-        ref_level = purchase_price
-        current_val = current_price
-        stock_sn = line
+   
+    full_scale_pct = scale_pct
+    ref_level = purchase_price
+    current_val = current_price
+    stock_sn = 0
 
     Matrix = [[0 for x in range(8)] for y in range(8)]
-
-    for stock_sn in range(8,2):
+    outmatrix = []
+    for stock_sn in range(8):
 
             #sleep(1)
             ratio = (float(current_val[stock_sn])/ref_level[stock_sn])*100-100

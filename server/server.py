@@ -1,5 +1,5 @@
 from bottle import route, run, response, hook, static_file, get, redirect, PasteServer, request, abort, template
-import yql
+#import yql
 import sqlite3
 from ledbridge import sendtogrid
 
@@ -8,6 +8,8 @@ con = sqlite3.connect('stocks.db')
 con.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol char(100) NOT NULL, purchase_price INTEGER NOT NULL)")
 server_port = 80
 demo = False
+stocks_price = [32.74,22.78,888.79,23.92,174.83,40.26,51.12,14.66]
+stocks_price.reverse()
 
 @hook('after_request')
 def enable_cors():
@@ -62,12 +64,16 @@ def update_quotes():
 	#get list of stocks from JSON object
 
 	print request.json
+	user_price = []
 	for stock in request.json:
 		print stock['symbol'], stock['price']
+		user_price.append(int(stock['price']))
 	out = {'status':'ok'}
 
+	print user_price
 	if not(demo):
-		sendtogrid([500,300,200,100], [498, 301, 202, 99], 5)
+		user_price.reverse()
+		sendtogrid(stocks_price, user_price, 5)
 	return out
 
 run(host='0.0.0.0', port=server_port, reloader=True, debug=True)
