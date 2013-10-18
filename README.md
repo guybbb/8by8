@@ -6,4 +6,5 @@ A non-intrusive minimal display that provides you with real time stock market da
 Technology & Hardware
 =====================
 LED Matrix - Serial Interface - Red/Green/Blue (https://www.sparkfun.com/products/760)
+
 Raspbery Pi
